@@ -17,6 +17,7 @@ type WeatherResponse struct {
 	Infocode  string     `json:"infocode"`
 	Forecasts []Forecast `json:"forecasts"`
 }
+
 type Forecast struct {
 	City       string `json:"city"`
 	Adcode     string `json:"adcode"`
@@ -24,6 +25,7 @@ type Forecast struct {
 	Reporttime string `json:"reporttime"`
 	Casts      []Cast `json:"casts"`
 }
+
 type Cast struct {
 	Date         string `json:"date"`
 	Week         string `json:"week"`

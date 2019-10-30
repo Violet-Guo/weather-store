@@ -4,20 +4,20 @@
 FROM registry.cn-hangzhou.aliyuncs.com/knative-sample/golang:1.12.9 as builder
 
 # Copy local code to the container image.
-WORKDIR /go/src/github.com/knative-sample/weather-store
+WORKDIR /go/src/github.com/Violet-Guo/weather-store
 COPY . .
 
 # Build the command inside the container.
 # (You may fetch or manage dependencies here,
 # either manually or with a tool like "godep".)
 # Build
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o weatherstore github.com/knative-sample/weather-store/cmd
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o weatherstore github.com/Violet-Guo/weather-store/cmd
 
 
 # Use a Docker multi-stage build to create a lean production image.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM registry.cn-beijing.aliyuncs.com/knative-sample/centos:7.6.1810
-COPY --from=builder /go/src/github.com/knative-sample/weather-store/weatherstore /weatherstore
+COPY --from=builder /go/src/github.com/Violet-Guo/weather-store/weatherstore /weatherstore
 
 # Run the web service on container startup.
 CMD ["/weatherstore"]
